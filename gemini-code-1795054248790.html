@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Lamaran Kerja - Miflahunnisah</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #e2e8f0; /* Abu-abu terang untuk latar belakang halaman */
+            color: #334155; /* Abu-abu gelap untuk teks utama */
+            line-height: 1.6;
+            padding: 30px 15px;
+        }
+
+        /* Container Utama CV */
+        .cv-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Kolom Kiri (Sidebar Abu-Abu Gelap) */
+        .sidebar {
+            background-color: #334155; /* Slate Gray Gelap */
+            color: #f8fafc;
+            padding: 40px 30px;
+        }
+
+        .profile-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background-color: #64748b;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #94a3b8;
+            overflow: hidden;
+            font-size: 14px;
+            color: #e2e8f0;
+            text-align: center;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar h2 {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 2px solid #64748b;
+            padding-bottom: 8px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #cbd5e1;
+        }
+
+        .contact-info {
+            list-style: none;
+            font-size: 14px;
+        }
+
+        .contact-info li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .contact-info span.label {
+            font-weight: bold;
+            color: #94a3b8;
+            min-width: 65px;
+        }
+
+        .skill-list {
+            list-style: none;
+            font-size: 14px;
+        }
+
+        .skill-list li {
+            margin-bottom: 12px;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background-color: #475569;
+            border-radius: 3px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background-color: #cbd5e1;
+        }
+
+        /* Kolom Kanan (Konten Utama Abu-Abu Terang/Putih) */
+        .main-content {
+            padding: 45px 40px;
+            background-color: #f8fafc;
+        }
+
+        .header {
+            border-bottom: 3px solid #475569;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 34px;
+            color: #1e293b;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .header p.job-title {
+            font-size: 18px;
+            color: #64748b;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #334155;
+            background-color: #e2e8f0;
+            padding: 8px 15px;
+            border-left: 4px solid #475569;
+            margin-bottom: 18px;
+        }
+
+        .section p {
+            font-size: 15px;
+            color: #475569;
+            text-align: justify;
+        }
+
+        .item {
+            margin-bottom: 20px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .item-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1e293b;
+        }
+
+        .item-date {
+            font-size: 13px;
+            color: #64748b;
+            background-color: #e2e8f0;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .item-subtitle {
+            font-size: 14px;
+            color: #64748b;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .item ul {
+            padding-left: 20px;
+            font-size: 14px;
+            color: #475569;
+        }
+
+        .item ul li {
+            margin-bottom: 5px;
+        }
+
+        /* Tombol Cetak / Simpan PDF */
+        .print-btn-container {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .btn-print {
+            background-color: #475569;
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-print:hover {
+            background-color: #1e293b;
+        }
+
+        /* Responsif untuk HP / Layar Kecil */
+        @media (max-width: 768px) {
+            .cv-container {
+                grid-template-columns: 1fr;
+            }
+            .main-content {
+                padding: 30px 20px;
+            }
+            .item-header {
+                flex-direction: column;
+            }
+            .item-date {
+                margin-top: 4px;
+            }
+        }
+
+        /* Pengaturan saat di-print atau disimpan sebagai PDF */
+        @media print {
+            body {
+                background-color: #ffffff;
+                padding: 0;
+            }
+            .cv-container {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+            .print-btn-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cv-container">
+        <!-- Sidebar Kiri -->
+        <aside class="sidebar">
+            <div class="profile-photo">
+                <!-- Ganti 'foto.jpg' dengan nama file foto Anda jika ada -->
+                <span>Foto Profil</span>
+            </div>
+
+            <h2>Kontak</h2>
+            <ul class="contact-info">
+                <li>
+                    <span class="label">Telepon:</span>
+                    <span>083172689666</span>
+                </li>
+                <li>
+                    <span class="label">Alamat:</span>
+                    <span>Brazil</span>
+                </li>
+                <li>
+                    <span class="label">Email:</span>
+                    <span>miflahunnisah@email.com</span>
+                </li>
+            </ul>
+
+            <h2>Keahlian</h2>
+            <ul class="skill-list">
+                <li>
+                    Komunikasi & Negosiasi
+                    <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
+                </li>
+                <li>
+                    Manajemen Administrasi
+                    <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
+                </li>
+                <li>
+                    Microsoft Office / Google Workspace
+                    <div class="skill-bar"><div class="skill-fill" style="width: 88%;"></div></div>
+                </li>
+                <li>
+                    Kerja Sama Tim
+                    <div class="skill-bar"><div class="skill-fill" style="width: 95%;"></div></div>
+                </li>
+            </ul>
+
+            <h2>Bahasa</h2>
+            <ul class="skill-list">
+                <li>Bahasa Indonesia (Aktif)</li>
+                <li>Bahasa Inggris (Menengah)</li>
+                <li>Bahasa Portugis (Dasar)</li>
+            </ul>
+        </aside>
+
+        <!-- Konten Utama Kanan -->
+        <main class="main-content">
+            <header class="header">
+                <h1>Miflahunnisah</h1>
+                <p class="job-title">Profesional Administrasi & Operasional</p>
+            </header>
+
+            <section class="section">
+                <h2>Profil Singkat</h2>
+                <p>
+                    Individu yang berdedikasi tinggi, teliti, dan memiliki kemampuan komunikasi serta organisasi yang baik. Berpengalaman dalam mengelola tugas administratif, pelayanan pelanggan, dan koordinasi operasional. Siap berkontribusi secara maksimal dan beradaptasi dengan cepat di lingkungan kerja yang dinamis.
+                </p>
+            </section>
+
+            <section class="section">
+                <h2>Pengalaman Kerja</h2>
+                
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Staf Administrasi & Operasional</span>
+                        <span class="item-date">2023 - Sekarang</span>
+                    </div>
+                    <div class="item-subtitle">Nama Perusahaan Sebelumnya</div>
+                    <ul>
+                        <li>Mengelola pengarsipan dokumen harian, laporan keuangan ringan, dan inventaris kantor secara rapi.</li>
+                        <li>Melayani komunikasi dengan klien dan mitra bisnis secara profesional melalui telepon maupun tatap muka.</li>
+                        <li>Membantu menyusun jadwal operasional tim agar target kerja tercapai tepat waktu.</li>
+                    </ul>
+                </div>
+
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Customer Service / Pelayanan Pelanggan</span>
+                        <span class="item-date">2021 - 2023</span>
+                    </div>
+                    <div class="item-subtitle">Nama Perusahaan / Instansi</div>
+                    <ul>
+                        <li>Menangani pertanyaan, masukan, dan keluhan pelanggan dengan solusi yang cepat dan ramah.</li>
+                        <li>Mencatat data transaksi harian dan menyusun rekapitulasi laporan bulanan.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Pendidikan</h2>
+                
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Pendidikan Terakhir (S1 / SMA / SMK)</span>
+                        <span class="item-date">2017 - 2021</span>
+                    </div>
+                    <div class="item-subtitle">Nama Universitas / Sekolah & Jurusan</div>
+                </div>
+            </section>
+
+            <div class="print-btn-container">
+                <button class="btn-print" onclick="window.print()">Cetak / Simpan sebagai PDF</button>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
